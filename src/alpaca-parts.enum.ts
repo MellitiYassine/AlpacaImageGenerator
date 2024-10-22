@@ -1,3 +1,10 @@
-enum AlpacaParts {
-    BACKGROUND, ACCESSORIES, EARS, EYES, HAIR, LEG, MOUTH, NECK
-}
+export enum AlpacaParts {
+    BACKGROUNDS = 'BACKGROUNDS',
+    ACCESSORIES = 'ACCESSORIES',
+    EARS = 'EARS',
+    EYES = 'EYES',
+    HAIR = 'HAIR',
+    LEG = 'LEG',
+    MOUTH = 'MOUTH',
+    NECK = 'NECK'
+  }

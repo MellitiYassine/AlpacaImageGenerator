@@ -1,11 +1,14 @@
-<!-- <div>
-    <div class="title">
-        <h1>ALPACA GENERATOR</h1>
-    </div>
-
-    <div class="main">
+<div class="parent">
+       <div class="main">
         <div class="display">
-            <div class="image"></div>
+            <div class="image">
+                <div class="title">
+                    <h1>ALPACA GENERATOR</h1>
+                </div>
+                <div>
+                    <canvas #alpacaCanvas width="512" height="512"></canvas>
+                </div>
+            </div>
             <div class="image-button">
                 <p-button label="Random" />
                 <p-button label="Downlaod" />
@@ -13,12 +16,19 @@
         </div>
         <div class="parameters">
             <legend>ACCESSORIZE THE ALPACA</legend>
-            <div class="options"></div>
+            <div class="options">
+                <div class="button-container">
+                    <button  [ngClass]="isSelectedAccessory(part) ? 'p-button-rounded' : 'p-button-outlined'" pButton *ngFor="let part of partKeys" (click)="onAccessorySelect(part)">
+                        {{ getAccessoryPartName(part) }}
+                    </button>
+                </div>
+            </div>
             <legend>STYLE</legend>
-            <div class="options"></div>
+            <div class="options">
+                <button [ngClass]="isSelectedStyle(style) ? 'p-button-rounded' : 'p-button-outlined'"  pButton *ngFor="let style of styleSuggestionList" (click)="onStyleSelect(style)">
+                    {{ getStyleNameFromPath(style) }}
+                </button>
+            </div>
         </div>
     </div>
-</div> -->
-<div>
-    <canvas #alpacaCanvas width="512" height="512"></canvas>
 </div>

@@ -1,0 +1,65 @@
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+h1 {
+    font-weight: bolder;
+    padding-left: 100px;
+}
+
+legend {
+    font-size: 0.86rem;
+    line-height: 1.2;
+    font-weight: 920;
+    text-transform: uppercase;
+    color: rgb(0, 27, 62);
+}
+
+.options {
+    width: 370px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+:host ::ng-deep .p-button {
+    margin-left: 4px;
+    margin-right: 4px;
+    margin-top: 5px;
+}
+
+
+:host ::ng-deep .p-button-rounded {
+    padding: 12px 32px;
+    color: rgb(255, 255, 255);
+    font-weight: normal;
+    background: rgb(42, 92, 167);
+    border: 1px solid rgb(42, 92, 167);
+}
+
+:host ::ng-deep .p-button-outlined {
+    padding: 12px 32px;
+    border: 1px solid rgb(139, 183, 249);
+    border-radius: 30px;
+    color: rgb(139, 183, 249);
+    outline: none;
+    font-size: normal;
+    line-height: 1.2;
+}
+
+.parent {
+    min-height: 100vh;
+    height: 100%;
+    background: rgb(241, 241, 241)
+}

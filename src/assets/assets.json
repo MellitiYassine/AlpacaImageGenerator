@@ -1,0 +1,71 @@
+{
+  "accessories": [
+    "assets/accessories/earings.png",
+    "assets/accessories/flower.png",
+    "assets/accessories/glasses.png",
+    "assets/accessories/headphone.png"
+  ],
+  "backgrounds": [
+    "assets/backgrounds/blue50.png",
+    "assets/backgrounds/blue60.png",
+    "assets/backgrounds/blue70.png",
+    "assets/backgrounds/darkblue30.png",
+    "assets/backgrounds/darkblue50.png",
+    "assets/backgrounds/darkblue70.png",
+    "assets/backgrounds/green50.png",
+    "assets/backgrounds/green60.png",
+    "assets/backgrounds/green70.png",
+    "assets/backgrounds/grey40.png",
+    "assets/backgrounds/grey70.png",
+    "assets/backgrounds/grey80.png",
+    "assets/backgrounds/red50.png",
+    "assets/backgrounds/red60.png",
+    "assets/backgrounds/red70.png",
+    "assets/backgrounds/yellow50.png",
+    "assets/backgrounds/yellow60.png",
+    "assets/backgrounds/yellow70.png"
+  ],
+  "ears": [
+    "assets/ears/default.png",
+    "assets/ears/tilt-backward.png",
+    "assets/ears/tilt-forward.png"
+  ],
+  "eyes": [
+    "assets/eyes/angry.png",
+    "assets/eyes/default.png",
+    "assets/eyes/naughty.png",
+    "assets/eyes/panda.png",
+    "assets/eyes/smart.png",
+    "assets/eyes/star.png"
+  ],
+  "hair": [
+    "assets/hair/bang.png",
+    "assets/hair/curls.png",
+    "assets/hair/default.png",
+    "assets/hair/elegant.png",
+    "assets/hair/fancy.png",
+    "assets/hair/quiff.png",
+    "assets/hair/short.png"
+  ],
+  "leg": [
+    "assets/leg/bubble-tea.png",
+    "assets/leg/cookie.png",
+    "assets/leg/default.png",
+    "assets/leg/game-console.png",
+    "assets/leg/tilt-backward.png",
+    "assets/leg/tilt-forward.png"
+  ],
+  "mouth": [
+    "assets/mouth/astonished.png",
+    "assets/mouth/default.png",
+    "assets/mouth/eating.png",
+    "assets/mouth/laugh.png",
+    "assets/mouth/tongue.png"
+  ],
+  "neck": [
+    "assets/neck/bend-backward.png",
+    "assets/neck/bend-forward.png",
+    "assets/neck/default.png",
+    "assets/neck/thick.png"
+  ]
+}
