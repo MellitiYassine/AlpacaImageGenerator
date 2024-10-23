@@ -53,23 +53,23 @@ export class AppComponent implements OnInit {
     const neck = await this.loadImage(this.neck);
 
 
-    this.ctx.drawImage(backgrounds, 100, 35, canvasWidth / 1.5, canvasHeight / 1.5);
+    this.ctx.drawImage(backgrounds, 100, 100, canvasWidth / 1.5, canvasHeight / 1.5);
 
-    this.ctx.drawImage(neck, 100, 50, neck.naturalWidth / 2.2, neck.naturalHeight / 2.2);
+    this.ctx.drawImage(neck, 100, 115, neck.naturalWidth / 2.2, neck.naturalHeight / 2.2);
 
-    this.ctx.drawImage(ears, 100, 40, ears.naturalWidth / 2.2, ears.naturalHeight / 2.2);
+    this.ctx.drawImage(ears, 100, 105, ears.naturalWidth / 2.2, ears.naturalHeight / 2.2);
 
-    this.ctx.drawImage(hair, 90, 50, hair.naturalWidth / 2.2, hair.naturalHeight / 2.2);
+    this.ctx.drawImage(hair, 90, 115, hair.naturalWidth / 2.2, hair.naturalHeight / 2.2);
 
-    this.ctx.drawImage(eyes, 100, 40, eyes.naturalWidth / 2.2, eyes.naturalHeight / 2.2);
+    this.ctx.drawImage(eyes, 100, 105, eyes.naturalWidth / 2.2, eyes.naturalHeight / 2.2);
 
-    this.ctx.drawImage(nose, 100, 50, nose.naturalWidth / 2.2, nose.naturalHeight / 2.2);
+    this.ctx.drawImage(nose, 100, 115, nose.naturalWidth / 2.2, nose.naturalHeight / 2.2);
 
-    this.ctx.drawImage(mouth, 90, 50, mouth.naturalWidth / 2.2, mouth.naturalHeight / 2.2);
+    this.ctx.drawImage(mouth, 90, 115, mouth.naturalWidth / 2.2, mouth.naturalHeight / 2.2);
 
-    this.ctx.drawImage(leg, 100, 50, leg.naturalWidth / 2.2, leg.naturalHeight / 2.2);
+    this.ctx.drawImage(leg, 100, 115, leg.naturalWidth / 2.2, leg.naturalHeight / 2.2);
 
-    this.ctx.drawImage(accessories, 100, 50, neck.naturalWidth / 2.2, neck.naturalHeight / 2.2);
+    this.ctx.drawImage(accessories, 100, 115, neck.naturalWidth / 2.2, neck.naturalHeight / 2.2);
   }
 
   loadImage(src: string): Promise<HTMLImageElement> {
@@ -187,8 +187,47 @@ export class AppComponent implements OnInit {
         a.click();
         a.remove();
       };
-      xhr.open('GET', canvasImage); // This is to download the canvas Image
+      xhr.open('GET', canvasImage);
       xhr.send();
     
+  }
+   random(){
+    Object.keys(AlpacaParts).forEach(part => {
+       this.http.get('assets/assets.json')
+      .toPromise().then((data: any) => {
+        let styleList: string[] = data[part.toString().toLocaleLowerCase()];
+        let random = styleList.length > 0 ? this.randomIntFromInterval(0, styleList.length - 1 ) : 0;
+        switch (part) {
+          case AlpacaParts.HAIR:
+             this.hair = styleList[random];
+             break;
+          case AlpacaParts.NECK:
+             this.neck = styleList[random];
+             break;
+          case AlpacaParts.ACCESSORIES:
+             this.accessories = styleList[random];
+             break;
+          case AlpacaParts.EARS:
+             this.ears = styleList[random];
+             break;
+          case AlpacaParts.EYES:
+             this.eyes = styleList[random];
+             break;
+          case AlpacaParts.BACKGROUNDS:
+             this.background = styleList[random];
+             break;
+          case AlpacaParts.LEG:
+             this.leg = styleList[random];
+             break;
+          case AlpacaParts.MOUTH:
+             this.mouth = styleList[random];
+        }
+      });
+    });
+    this.generateAlpaca();
+  }
+
+  randomIntFromInterval(min: number, max: number) {
+    return Math.floor(Math.random() * (max - min + 1) + min);
   }
 }

@@ -12,8 +12,11 @@
 
 
 h1 {
-    font-weight: bolder;
+    font-weight: 800;
+    margin-bottom: 0px;
     padding-left: 100px;
+    padding-bottom: 0px;
+    letter-spacing: 0.15rem;
 }
 
 legend {
@@ -61,5 +64,21 @@ legend {
 .parent {
     min-height: 100vh;
     height: 100%;
-    background: rgb(241, 241, 241)
+    background: rgb(235, 235, 229);
+}
+
+:host ::ng-deep .image-button .p-button {
+    background-color: white;
+    color: rgb(0, 27, 62);
+    font-weight: 650;
+    border-style: none;
+    font-size: small;
+    width: 100%;
+}
+
+.image-button{
+    display: flex;
+}
+:host ::ng-deep .p-element{
+    margin-left: 10px;
 }

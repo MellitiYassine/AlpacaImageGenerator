@@ -1,5 +1,5 @@
 <div class="parent">
-       <div class="main">
+    <div class="main">
         <div class="display">
             <div class="image">
                 <div class="title">
@@ -10,22 +10,32 @@
                 </div>
             </div>
             <div class="image-button">
-                <p-button label="Random" />
-                <p-button label="Downlaod" (onClick)="download()" />
+                <p-button label="Random" (onClick)="random()">
+                    <ng-template pTemplate="icon">
+                        <img src="assets/shuffle.png" alt="Custom Icon" width="20" height="20">
+                    </ng-template>
+                </p-button>
+                <p-button label="Downlaod" (onClick)="download()">
+                    <ng-template pTemplate="icon">
+                        <img src="assets/download.png" alt="Custom Icon" width="20" height="20">
+                    </ng-template>
+                </p-button>
             </div>
         </div>
         <div class="parameters">
             <legend>ACCESSORIZE THE ALPACA</legend>
             <div class="options">
                 <div class="button-container">
-                    <button  [ngClass]="isSelectedAccessory(part) ? 'p-button-rounded' : 'p-button-outlined'" pButton *ngFor="let part of partKeys" (click)="onAccessorySelect(part)">
+                    <button [ngClass]="isSelectedAccessory(part) ? 'p-button-rounded' : 'p-button-outlined'" pButton
+                        *ngFor="let part of partKeys" (click)="onAccessorySelect(part)">
                         {{ getAccessoryPartName(part) }}
                     </button>
                 </div>
             </div>
             <legend>STYLE</legend>
             <div class="options">
-                <button [ngClass]="isSelectedStyle(style) ? 'p-button-rounded' : 'p-button-outlined'"  pButton *ngFor="let style of styleSuggestionList" (click)="onStyleSelect(style)">
+                <button [ngClass]="isSelectedStyle(style) ? 'p-button-rounded' : 'p-button-outlined'" pButton
+                    *ngFor="let style of styleSuggestionList" (click)="onStyleSelect(style)">
                     {{ getStyleNameFromPath(style) }}
                 </button>
             </div>
