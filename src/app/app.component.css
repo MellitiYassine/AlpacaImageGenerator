@@ -76,9 +76,10 @@ legend {
     width: 100%;
 }
 
-.image-button{
+.image-button {
     display: flex;
 }
-:host ::ng-deep .p-element{
+
+:host ::ng-deep .p-element {
     margin-left: 10px;
 }

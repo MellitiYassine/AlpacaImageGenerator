@@ -32,10 +32,11 @@ export class AppComponent implements OnInit {
     this.getAccessoriesSuggestion()
   }
 
+
   async getAccessoriesSuggestion() {
     await this.http.get('assets/assets.json')
       .toPromise().then((data: any) => {
-        this.styleSuggestionList = data[this.selectedAccessory.toString().toLocaleLowerCase()];
+        this.styleSuggestionList = data[this.selectedAccessory.toString().toLowerCase()];
       });
   }
 
@@ -124,7 +125,7 @@ export class AppComponent implements OnInit {
   }
 
   getAccessoryPartName(accessoryName: string): string {
-    let styleName = accessoryName.toLocaleLowerCase();
+    let styleName = accessoryName.toLowerCase();
 
     styleName = styleName.charAt(0).toUpperCase() + styleName.slice(1);
 
@@ -143,86 +144,86 @@ export class AppComponent implements OnInit {
 
 
   isSelectedAccessory(partName: string): boolean {
-    return this.selectedAccessory.toString().toLocaleLowerCase() == partName.toString().toLocaleLowerCase();
+    return this.selectedAccessory.toString().toLowerCase() == partName.toString().toLowerCase();
   }
 
   isSelectedStyle(style: string): boolean {
     switch (this.selectedAccessory) {
       case AlpacaParts.HAIR:
-        return this.hair.toLocaleLowerCase() == style.toLowerCase();
+        return this.hair.toLowerCase() == style.toLowerCase();
 
       case AlpacaParts.NECK:
-        return this.neck.toLocaleLowerCase() == style.toLowerCase();
+        return this.neck.toLowerCase() == style.toLowerCase();
 
       case AlpacaParts.ACCESSORIES:
-        return this.accessories.toLocaleLowerCase() == style.toLowerCase();
+        return this.accessories.toLowerCase() == style.toLowerCase();
 
       case AlpacaParts.EARS:
-        return this.ears.toLocaleLowerCase() == style.toLowerCase();
+        return this.ears.toLowerCase() == style.toLowerCase();
 
       case AlpacaParts.EYES:
-        return this.eyes.toLocaleLowerCase() == style.toLowerCase();
+        return this.eyes.toLowerCase() == style.toLowerCase();
 
       case AlpacaParts.BACKGROUNDS:
-        return this.background.toLocaleLowerCase() == style.toLowerCase();
+        return this.background.toLowerCase() == style.toLowerCase();
 
       case AlpacaParts.LEG:
-        return this.leg.toLocaleLowerCase() == style.toLowerCase();
+        return this.leg.toLowerCase() == style.toLowerCase();
 
       case AlpacaParts.MOUTH:
-        return this.mouth.toLocaleLowerCase() == style.toLowerCase();
+        return this.mouth.toLowerCase() == style.toLowerCase();
     }
   }
 
-  download(){
+  download() {
     let canvasImage = this.canvasRef.nativeElement.toDataURL("image/png");
     let xhr = new XMLHttpRequest();
     xhr.responseType = 'blob';
     xhr.onload = function () {
-        let a = document.createElement('a');
-        a.href = window.URL.createObjectURL(xhr.response);
-        a.download = 'Alpaca' + formatDate(Date.now(),'yyyy_MM_dd_hh_mm_ss','en-US')  + '.png';
-        a.style.display = 'none';
-        document.body.appendChild(a);
-        a.click();
-        a.remove();
-      };
-      xhr.open('GET', canvasImage);
-      xhr.send();
-    
+      let a = document.createElement('a');
+      a.href = window.URL.createObjectURL(xhr.response);
+      a.download = 'Alpaca' + formatDate(Date.now(), 'yyyy_MM_dd_hh_mm_ss', 'en-US') + '.png';
+      a.style.display = 'none';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+    };
+    xhr.open('GET', canvasImage);
+    xhr.send();
+
   }
-   random(){
+  random() {
     Object.keys(AlpacaParts).forEach(part => {
-       this.http.get('assets/assets.json')
-      .toPromise().then((data: any) => {
-        let styleList: string[] = data[part.toString().toLocaleLowerCase()];
-        let random = styleList.length > 0 ? this.randomIntFromInterval(0, styleList.length - 1 ) : 0;
-        switch (part) {
-          case AlpacaParts.HAIR:
-             this.hair = styleList[random];
-             break;
-          case AlpacaParts.NECK:
-             this.neck = styleList[random];
-             break;
-          case AlpacaParts.ACCESSORIES:
-             this.accessories = styleList[random];
-             break;
-          case AlpacaParts.EARS:
-             this.ears = styleList[random];
-             break;
-          case AlpacaParts.EYES:
-             this.eyes = styleList[random];
-             break;
-          case AlpacaParts.BACKGROUNDS:
-             this.background = styleList[random];
-             break;
-          case AlpacaParts.LEG:
-             this.leg = styleList[random];
-             break;
-          case AlpacaParts.MOUTH:
-             this.mouth = styleList[random];
-        }
-      });
+      this.http.get('assets/assets.json')
+        .toPromise().then((data: any) => {
+          let styleList: string[] = data[part.toString().toLowerCase()];
+          let random = styleList.length > 0 ? this.randomIntFromInterval(0, styleList.length - 1) : 0;
+          switch (part) {
+            case AlpacaParts.HAIR:
+              this.hair = styleList[random];
+              break;
+            case AlpacaParts.NECK:
+              this.neck = styleList[random];
+              break;
+            case AlpacaParts.ACCESSORIES:
+              this.accessories = styleList[random];
+              break;
+            case AlpacaParts.EARS:
+              this.ears = styleList[random];
+              break;
+            case AlpacaParts.EYES:
+              this.eyes = styleList[random];
+              break;
+            case AlpacaParts.BACKGROUNDS:
+              this.background = styleList[random];
+              break;
+            case AlpacaParts.LEG:
+              this.leg = styleList[random];
+              break;
+            case AlpacaParts.MOUTH:
+              this.mouth = styleList[random];
+          }
+        });
     });
     this.generateAlpaca();
   }
