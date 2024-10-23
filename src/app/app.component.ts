@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { AlpacaParts } from '../alpaca-parts.enum';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -171,5 +172,23 @@ export class AppComponent implements OnInit {
       case AlpacaParts.MOUTH:
         return this.mouth.toLocaleLowerCase() == style.toLowerCase();
     }
+  }
+
+  download(){
+    let canvasImage = this.canvasRef.nativeElement.toDataURL("image/png");
+    let xhr = new XMLHttpRequest();
+    xhr.responseType = 'blob';
+    xhr.onload = function () {
+        let a = document.createElement('a');
+        a.href = window.URL.createObjectURL(xhr.response);
+        a.download = 'Alpaca' + formatDate(Date.now(),'yyyy_MM_dd_hh_mm_ss','en-US')  + '.png';
+        a.style.display = 'none';
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+      };
+      xhr.open('GET', canvasImage); // This is to download the canvas Image
+      xhr.send();
+    
   }
 }
